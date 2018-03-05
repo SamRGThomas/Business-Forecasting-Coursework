@@ -47,15 +47,7 @@ for (i in 1:400){
 #from being used on inappropriate data - the majority of errors occur in the non-toolbox arima models, particularly the 
 #seasonal ones.
 
-arima1 = Arima(1:8)
-arima2 = Arima(1:8)
-arima3 = Arima(1:8)
-arima4 = Arima(1:8)
-arima5 = Arima(1:8)
-arima6 = Arima(1:8)
-arima7 = Arima(1:8)
-arima8 = Arima(1:8)
-arima9 = Arima(1:8)
+arima1, arima2, arima3, arima4, arima5, arima6, arima7, arima8, arima9 = Arima(1:8)
 
 #Create arrays to hold performance measures for model selection
 LARs = array(0, c(length(timeSeries),no_methods))
@@ -104,10 +96,7 @@ cox.stuart.test = function (x) {
 #create is even function to check if a number is even
 is.even <- function(x) x %% 2 == 0
 
-
-
-############ Toolbox and benchmark box #################
-
+############ Toolbox of forecasting methods #################
 toolbox = function(tsRef,rawSample,decompSample,decompSeasonCo,tool,origin,horizon,useRules=FALSE,checkArimas =FALSE,justToolbox=TRUE){
   
    if (tool == 1){
@@ -289,7 +278,7 @@ toolbox = function(tsRef,rawSample,decompSample,decompSeasonCo,tool,origin,horiz
   
 }
 
-#benchmark box
+#benchmark box - box of benchmark forecasting methods to compare efficacy of toolbox
 benchmarkbox = function(inSample,benchmark,origin=FALSE,horizon=FALSE){
   if (benchmark == "naive"){
     result =  naive(inSample, h = horizon)$mean
